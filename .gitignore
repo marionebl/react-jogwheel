@@ -1,0 +1,13 @@
+# node modules
+node_modules
+
+# distribution folder
+distribution
+
+# package
+react-jogwheel-*.tgz
+
+# vim files
+*.swp
+*.swo
+
