@@ -1,6 +1,6 @@
 > Take control of your CSS keyframe animations with React
 
-![react-jogwheel logo](https://cdn.rawgit.com/marionebl/react-jogwheel/master/react-jogwheel.svg)
+![react-jogwheel logo](https://cdn.rawgit.com/marionebl/react-jogwheel/master/react-jogwheel-banner.svg)
 
 # react-jogwheel
 
