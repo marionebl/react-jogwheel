@@ -1,60 +1,87 @@
 import * as React from 'react';
-import {Component, PropTypes} from 'react';
+import {Component, PropTypes as types} from 'react';
 
-import jogwheel from 'jogwheel';
+import init from './library/init-jogwheel';
+import onSample from './library/on-sample';
 
-export default class JogWheel extends Component {
+const noop = () => {};
+
+export default class JogWheel extends React.Component {
 	static propTypes = {
-		component: PropTypes.element,
-		children: PropTypes.arrayOf(PropTypes.element),
-		progress: PropTypes.number,
-		duration: PropTypes.number,
-		delay: PropTypes.number,
-		iterationCount: PropTypes.number,
-		timingFunction: PropTypes.string,
-		playState: PropTypes.oneOf(['running', 'paused'])
+		component: types.oneOfType([
+			types.element,
+			types.string,
+			types.func
+		]),
+		children: types.oneOfType([
+			types.node,
+			types.arrayOf(types.node)
+		]),
+		progress: types.number,
+		onProgress: types.func,
+		duration: types.number,
+		delay: types.number,
+		iterationCount: types.number,
+		timingFunction: types.string,
+		playing: types.bool
+	};
+
+	static defaultProps = {
+		component: 'div',
+		onProgress: noop
 	};
 
 	instance = null;
+	state = {
+		style: {}
+	};
 
-	init(node) {
-		console.log(node);
-		const {
-			duration,
-			delay,
-			iterationCount,
-			timingFunction,
-			playState
-		} = this.props;
-
-		this.instance = jogwheel.create(node, {
-			duration,
-			delay,
-			iterationCount,
-			timingFunction,
-			playState,
-			render: this.onRender
-		});
+	constructor(props, context) {
+		super(props, context);
 	}
 
-	componentWillReceiveProps(props) {
-		this.instance.seek(props.progress);
+	componentWillUnmount() {
+		global.cancelAnimationFrame(this.sampler);
+	}
 
-		if (props.playState === 'running') {
+	componentDidMount() {
+		if (typeof this.props.progress === 'number') {
+			this.instance.seek(this.props.progress);
+		}
+
+		if (this.props.playing) {
 			this.instance.play();
 		} else {
 			this.instance.pause();
 		}
+
+		this.sampler = onSample(this);
 	}
 
-	onRender(...args) {
-		console.log(args);
+	componentWillReceiveProps(props) {
+		if (typeof props.progress === 'number' && props.progress !== this.props.progress) {
+			this.instance.seek(props.progress);
+		}
+
+		if (props.playing !== this.props.playing) {
+			if (props.playing) {
+				this.instance.play();
+			} else {
+				this.instance.pause();
+			}
+		}
 	}
 
 	render() {
 		const Component = this.props.component;
-		return (<Component {...this.props} ref={node => this.init(node)}>
-			{this.props.children}
-		</Component>);
+		return (
+			<Component
+				{...this.props}
+				ref={node => init(this, node)}
+				style={this.state.style}
+				>
+				{this.props.children}
+				</Component>
+		);
 	}
 }
