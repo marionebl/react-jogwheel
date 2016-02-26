@@ -4,10 +4,17 @@
   "description": "Take control of your CSS keyframe animations with React",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -r distribution",
-    "prebuild": "mkdir -p distribution",
-    "build": "babel source --out-dir distribution",
-    "postbuild": "cp *.{json,md} distribution"
+    "start": "npm run watch",
+    "clean": "rm -rf distribution",
+    "prepare": "mkdir -p distribution",
+    "copy": "cp *.{json,md} distribution",
+    "prebuild": "parallelshell 'npm run test' 'npm run clean && npm run prepare'",
+    "build": "(babel source --out-dir distribution && cat source/index.js | react2dts --name $npm_package_name > distribution/index.d.ts) && echo '' || notify -t 'react-jogwgeel' -m 'Build failed! 😢'",
+    "postbuild": "npm run copy && npm run notify",
+    "test": "eslint source/**/*.js && echo '' || notify -t 'react-jogwgeel' -m 'Linting failed! 😢'",
+    "watch": "watch 'npm run build' source",
+    "serve": "serve() {\nbeefy \"distribution/test/${1}.js\"\n}\n serve",
+    "notify": "echo 'Build ready, happy hacking! ✊' && notify -t 'react-jogwgeel' -m 'Build ready, happy hacking! ✊'"
   },
   "repository": {
     "type": "git",
@@ -31,17 +38,23 @@
     "babel-preset-es2015": "6.3.13",
     "babel-preset-react": "6.3.13",
     "babel-preset-stage-0": "6.3.13",
+    "beefy": "2.1.5",
+    "browserify": "13.0.0",
     "eslint": "1.10.3",
     "eslint-config-xo": "0.9.1",
     "eslint-config-xo-react": "0.3.0",
     "eslint-plugin-babel": "3.0.0",
     "eslint-plugin-react": "3.15.0",
-    "react": "0.14.6"
+    "node-notifier": "4.4.0",
+    "parallelshell": "2.0.0",
+    "react": "0.14.6",
+    "react-dom": "0.14.6",
+    "react-to-typescript-definitions": "0.10.0",
+    "watch": "0.17.1",
+    "web-animations-js": "2.1.4"
   },
   "peerDependencies": {
+    "jogwheel": ">= 1.4.0",
     "react": ">= 0.13"
-  },
-  "dependencies": {
-    "jogwheel": "1.4.0"
   }
 }
