@@ -3,3 +3,8 @@
 ![react-jogwheel logo](https://cdn.rawgit.com/marionebl/react-jogwheel/master/jogwheel.svg)
 
 # react-jogwheel
+
+---
+
+patternplate-core is built by Mario Nebl and [contributors](./documentation/contributors.md)
+with :heart: and released under the [MIT License](./license.md).
