@@ -106,9 +106,28 @@ render(mount, element);
 
 ---
 
-See the [examples](./examples/) for further details.
+⇨ See the [examples](./examples/) for details.
+
+## API
+
+⇨ See [API Doumentation](./documentation/api.md) for technical
+ interface documentation.
+
+## Contributing
+
+You dig `react-jogwheel` and want to submit a pull request?
+Awesome! Be sure to read the [contribution guide](./contributing.md)
+and you should be good to go.
+Here are some notes to get you coding real quick.
+
+```bash
+git clone git@github.com:marionebl/react-jogwheel.git
+cd react-jogwheel
+npm install
+npm start
+```
 
 ---
 
-patternplate-core is built by Mario Nebl and [contributors](./documentation/contributors.md)
+`react-jogwheel` is built by Mario Nebl and [contributors](./documentation/contributors.md)
 with :heart: and released under the [MIT License](./license.md).

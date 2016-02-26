@@ -1,3 +1,8 @@
 {
-  "extends": ["xo/esnext", "xo-react"]
+  "extends": ["xo/esnext", "xo-react"],
+  "plugins": ["require-jsdoc"],
+  "rules": {
+    "require-jsdoc": 2,
+    "valid-jsdoc": 2
+  }
 }

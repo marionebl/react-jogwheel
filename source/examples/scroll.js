@@ -111,6 +111,12 @@ class Application extends Component {
 	}
 }
 
+/**
+ * Execute the example
+ * @param {object} [window=global] Global window context
+ * @param {object} [document=global.document] Global document context
+ * @returns {null} null
+ */
 function main(window = global, document = global.document) {
 	// create mountpoint
 	const mount = document.createElement('div');
