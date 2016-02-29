@@ -56,7 +56,7 @@ export default class ReactJogWheel extends Component {
 	 * @property {number} delay of the animation in milliseconds, overrides `animation-delay`
 	 * @example
 	 * // Force animation-delay to 1000ms
-	 * <JogWheel duration={1000} />
+	 * <JogWheel delay={1000} />
 	 *
 	 * @property {number} iterationCount of the animation, overrides `animation-iteration-count`
 	 * @example

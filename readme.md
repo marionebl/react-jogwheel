@@ -4,9 +4,9 @@
 
 # react-jogwheel
 
-`react-jogwheel` allows for declarative declarative control of animations.
-By using [jogwheel](/marionebl/jogwheel) under the hood,
-it enables you to declare your animations where they belong
+`react-jogwheel` allows for declarative control of animations
+by using [jogwheel](/marionebl/jogwheel) under the hood.
+It enables you to write your animations where they belong
 – in your CSS - while giving you top notch control over them
 at the same time.
 

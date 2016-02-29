@@ -1,6 +1,6 @@
 # ReactJogwheel
 
-[source/index.js:79-96](https://github.com/marionebl/react-jogwheel/blob/75f6079b00b2471d263158f542a98772f2b1d586/source/index.js#L79-L96 "Source code on GitHub")
+[source/index.js:79-96](https://github.com/marionebl/react-jogwheel/blob/23b0625a7a9494200b4b3d2e6f422847a65bc026/source/index.js#L79-L96 "Source code on GitHub")
 
 React wrapper component for JogWheel
 
@@ -52,7 +52,7 @@ onProgress (...args) => {
 
 ```javascript
 // Force animation-delay to 1000ms
-<JogWheel duration={1000} />
+<JogWheel delay={1000} />
 ```
 
 ```javascript
