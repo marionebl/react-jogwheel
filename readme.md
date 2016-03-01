@@ -5,7 +5,7 @@
 # react-jogwheel
 
 `react-jogwheel` allows for declarative control of animations
-by using [jogwheel](/marionebl/jogwheel) under the hood.
+by using [jogwheel](https://github.com/marionebl/jogwheel) under the hood.
 It enables you to write your animations where they belong
 – in your CSS - while giving you top notch control over them
 at the same time.
@@ -106,7 +106,7 @@ render(mount, element);
 
 ---
 
-⇨ See the [examples](./examples/) for details.
+⇨ See the [examples](./source/examples/) for details.
 
 ## API
 
@@ -129,5 +129,5 @@ npm start
 
 ---
 
-`react-jogwheel` is built by Mario Nebl and [contributors](./documentation/contributors.md)
+`react-jogwheel` is built by Mario Nebl and [contributors](https://github.com/marionebl/react-jogwheel/graphs/contributors)
 with :heart: and released under the [MIT License](./license.md).
