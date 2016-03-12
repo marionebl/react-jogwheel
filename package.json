@@ -10,7 +10,7 @@
     "copy": "cp *.{json,md} distribution",
     "documentation": "documentation build -g -f=md source/index.js > documentation/api.md",
     "prebuild": "parallelshell 'npm run test' 'npm run clean && npm run prepare'",
-    "build": "(babel source --out-dir distribution && npm run documentation && cat source/index.js | react2dts --name $npm_package_name > distribution/index.d.ts) && echo '' || notify -t 'react-jogwgeel' -m 'Build failed! 😢'",
+    "build": "(babel source -s --out-dir distribution && npm run documentation && cat source/index.js | react2dts --name $npm_package_name > distribution/index.d.ts) && echo '' || notify -t 'react-jogwgeel' -m 'Build failed! 😢'",
     "postbuild": "npm run copy && npm run notify",
     "test": "(eslint source/**/*.js && remark *.md -u remark-lint && conventional-changelog --from=HEAD~1) && echo '' || notify -t 'react-jogwgeel' -m 'Linting failed! 😢'",
     "watch": "watch 'npm run build' source",
