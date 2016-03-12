@@ -74,5 +74,8 @@
   "peerDependencies": {
     "jogwheel": ">= 1.4.0",
     "react": ">= 0.13"
+  },
+  "dependencies": {
+    "debuglog": "1.0.1"
   }
 }

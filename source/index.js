@@ -1,8 +1,11 @@
+import debuglog from 'debuglog';
 import * as React from 'react';
 import {Component, PropTypes as types} from 'react';
 
 import init from './library/init-jogwheel';
 import onSample from './library/on-sample';
+
+const log = debuglog('react-jogwheel');
 
 /**
  * noop function
@@ -117,6 +120,13 @@ export default class ReactJogWheel extends Component {
 	instance = null;
 
 	/**
+	 * Internal node reference
+	 * @type {HTMLElement}
+	 * @access private
+	 */
+	node = null;
+
+	/**
 	 * Internal component state holding JogWheel styles for
 	 * polyfilled integration cases
 	 *
@@ -127,12 +137,29 @@ export default class ReactJogWheel extends Component {
 		style: {}
 	};
 
+	constructor(...args) {
+		super(...args);
+		this.ref = this.ref.bind(this);
+	}
+
+	/**
+	 * Save the node reference to component instance
+	 * @param  {HTMLElement} node refernce to save
+	 * @return {void}
+	 * @access private
+	 */
+	ref(node) {
+		log('::ref', node);
+		this.node = node;
+	}
+
 	/**
 	 * Detach the sampler loop when unmounting
 	 * @returns {null} null
 	 * @access private
 	 */
 	componentWillUnmount() {
+		log('::componentWillUnmount');
 		global.cancelAnimationFrame(this.sampler);
 	}
 
@@ -145,6 +172,9 @@ export default class ReactJogWheel extends Component {
 	 * @access private
 	 */
 	componentDidMount() {
+		log('::componentDidMount');
+		this.instance = init(this);
+
 		if (typeof this.props.progress === 'number') {
 			this.instance.seek(this.props.progress);
 		}
@@ -171,6 +201,7 @@ export default class ReactJogWheel extends Component {
 	 * @access private
 	 */
 	componentWillReceiveProps(props) {
+		log('::componentWillReceiveProps', props);
 		if (typeof props.progress === 'number' && props.progress !== this.props.progress) {
 			this.instance.seek(props.progress);
 		}
@@ -190,11 +221,12 @@ export default class ReactJogWheel extends Component {
 	 * @access private
 	 */
 	render() {
+		log('::render', this.props, this.state);
 		const Component = this.props.component;
 		return (
 			<Component
 				{...this.props}
-				ref={node => init(this, node)}
+				ref={this.ref}
 				style={this.state.style}
 				>
 				{this.props.children}

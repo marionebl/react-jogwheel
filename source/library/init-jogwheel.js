@@ -5,24 +5,16 @@ import JogWheel from 'jogwheel';
 /**
  * Attach a JogWheel instance to component
  * @param  {object} component React component to attach to
- * @param  {object} node      DOM node to work on
- * @return {null} null
+ * @return {object} jogwheel instance
  * @access private
  */
-export default (component, node) => {
-	if (node === null) {
-		return;
-	}
-
-	if (component.instance) {
-		return;
-	}
-
+export default component => {
+	const {node} = component;
 	const element = node instanceof Component ?
 		findDOMNode(node) :
 		node;
 
-	component.instance = JogWheel.create(element, {
+	return JogWheel.create(element, {
 		/**
 		 * Render the new frame on component
 		 * @param  {*} _             placeholder

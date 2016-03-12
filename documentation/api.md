@@ -1,6 +1,6 @@
 # ReactJogwheel
 
-[source/index.js:79-96](https://github.com/marionebl/react-jogwheel/blob/9b073aeab7f503ea22ca983b4713a6e8cf668186/source/index.js#L79-L96 "Source code on GitHub")
+[source/index.js:82-99](https://github.com/marionebl/react-jogwheel/blob/3190233ed4ed8927fa3e0c723155bd5b8e56473e/source/index.js#L82-L99 "Source code on GitHub")
 
 React wrapper component for JogWheel
 
