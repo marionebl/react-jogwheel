@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/marionebl/react-jogwheel/compare/v0.1.1...v0.1.2) (2016-03-12)
+
+
+### Bug Fixes
+
+* move usage of react node reference to componentDidMount ([b079cdd](https://github.com/marionebl/react-jogwheel/commit/b079cdd)), closes [#1](https://github.com/marionebl/react-jogwheel/issues/1)
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/marionebl/react-jogwheel/compare/v0.1.0...v0.1.1) (2016-03-01)
 
