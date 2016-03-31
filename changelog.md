@@ -1,3 +1,13 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/marionebl/react-jogwheel/compare/v0.1.2...v0.1.3) (2016-03-31)
+
+
+### Bug Fixes
+
+* **system:** publish valid npm packages ([2c45ab1](https://github.com/marionebl/react-jogwheel/commit/2c45ab1))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/marionebl/react-jogwheel/compare/v0.1.1...v0.1.2) (2016-03-12)
 
