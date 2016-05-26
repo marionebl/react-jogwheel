@@ -1,6 +1,6 @@
 import debuglog from 'debuglog';
 import * as React from 'react';
-import {Component, PropTypes as types} from 'react';
+import {Component} from 'react';
 
 import init from './library/init-jogwheel';
 import onSample from './library/on-sample';
@@ -80,22 +80,22 @@ export default class ReactJogWheel extends Component {
 	 *
 	 */
 	static propTypes = {
-		component: types.oneOfType([
-			types.element,
-			types.string,
-			types.func
+		children: React.PropTypes.oneOfType([
+			React.PropTypes.arrayOf(React.PropTypes.node),
+			React.PropTypes.node
 		]),
-		children: types.oneOfType([
-			types.node,
-			types.arrayOf(types.node)
+		component: React.PropTypes.oneOfType([
+			React.PropTypes.element,
+			React.PropTypes.func,
+			React.PropTypes.string
 		]),
-		progress: types.number,
-		onProgress: types.func,
-		duration: types.number,
-		delay: types.number,
-		iterationCount: types.number,
-		timingFunction: types.string,
-		playing: types.bool
+		delay: React.PropTypes.number,
+		duration: React.PropTypes.number,
+		iterationCount: React.PropTypes.number,
+		onProgress: React.PropTypes.func,
+		playing: React.PropTypes.bool,
+		progress: React.PropTypes.number,
+		timingFunction: React.PropTypes.string
 	};
 
 	/**
