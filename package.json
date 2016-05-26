@@ -10,7 +10,7 @@
     "copy": "cp package.json distribution && cp readme.md distribution && cp license.md distribution",
     "documentation": "documentation build -g -f=md source/index.js > documentation/api.md",
     "prebuild": "parallelshell 'npm run test' 'npm run clean && npm run prepare'",
-    "build": "(babel source -s --out-dir distribution && npm run documentation && cat source/index.js | react2dts --name $npm_package_name > distribution/index.d.ts) && echo '' || notify -t 'react-jogwgeel' -m 'Build failed! 😢'",
+    "build": "(babel source -s --out-dir distribution && npm run documentation && cat source/index.js | react2dts --top-level-module > distribution/index.d.ts) && echo '' || notify -t 'react-jogwgeel' -m 'Build failed! 😢'",
     "postbuild": "npm run copy && npm run notify",
     "test": "(eslint source/**/*.js && remark *.md -u remark-lint && conventional-changelog --from=HEAD~1) && echo '' || notify -t 'react-jogwgeel' -m 'Linting failed! 😢'",
     "watch": "watch 'npm run build' source",
@@ -66,7 +66,7 @@
     "parallelshell": "2.0.0",
     "react": "0.14.6",
     "react-dom": "0.14.6",
-    "react-to-typescript-definitions": "0.10.0",
+    "react-to-typescript-definitions": "0.12.0",
     "remark-lint": "3.0.0",
     "watch": "0.17.1",
     "web-animations-js": "2.1.4"
