@@ -1,6 +1,6 @@
 {
   "name": "react-jogwheel",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Take control of your CSS keyframe animations with React",
   "main": "index.js",
   "scripts": {

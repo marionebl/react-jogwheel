@@ -1,3 +1,9 @@
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/marionebl/react-jogwheel/compare/v0.1.4...v0.1.5) (2016-05-27)
+
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/marionebl/react-jogwheel/compare/v0.1.3...v0.1.4) (2016-05-26)
 
