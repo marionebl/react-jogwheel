@@ -10,7 +10,6 @@
     "copy": "cp package.json distribution && cp readme.md distribution && cp license.md distribution",
     "prebuild:all": "parallelshell 'npm run test' 'npm run clean && npm run prepare'",
     "build:all": "npm run build && npm run build-documentation && npm run build-typings",
-    "postbuild:all": "npm run copy",
     "prebuild": "npm run test",
     "build": "babel source -s --out-dir distribution",
     "build-documentation": "documentation build -g -f=md source/index.js > documentation/api.md",
@@ -20,10 +19,10 @@
     "commit": "git-cz",
     "commitmsg": "conventional-changelog-lint -e",
     "changelog": "conventional-changelog --preset angular --infile changelog.md --same-file --output-unreleased",
-    "push": "git push && git push --tags && hub release create \"v$npm_package_version\" --message=\"v$npm_package_version\n$(conventional-changelog -p angular)\" && npm publish",
+    "push": "git push && git push --tags && hub release create \"v$npm_package_version\" --message=\"v$npm_package_version\n$(conventional-changelog -p angular)\" && cd distribution && npm publish && cd ..",
     "release": "npm version $(conventional-recommended-bump -p angular)",
     "preversion": "npm run build:all && npm test",
-    "version": "npm run changelog && git add . && echo \"$(conventional-changelog -p angular)\"",
+    "version": "npm run changelog && git add . && npm run copy",
     "postversion": "git tag -d v$npm_package_version && git commit --amend -m \"chore(release): $npm_package_version\n$(conventional-changelog -p angular)\" && git tag -a v$npm_package_version -m \"$(conventional-changelog -p angular)\""
   },
   "config": {
